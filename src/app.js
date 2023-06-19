@@ -5,7 +5,6 @@ import router from './appRouter.js'
 import connectMongo from "./db.js"
 import { PORT } from './configServer.js';
 
-import { jsonGeographic } from './data_trasport.js';
 import loadingData from './loadingData.js';
 
 const app = express()

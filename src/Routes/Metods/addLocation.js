@@ -1,5 +1,4 @@
-import { model } from "mongoose"
-import {  modelGeolocation, modelGeolocation, modelGeolocation } from "../../modelGeolocation.js"
+import {modelGeolocation} from "../../modelGeolocation.js"
 
 const dataIsEmpty = (data) => {
     const response = {
@@ -26,7 +25,7 @@ const dataIsEmpty = (data) => {
         arrErrors.push('Error, el campo "tz" esta vacio')
 
     response.arrErrors = arrErrors
-    response.emptyAtributes = (arrErrors.length == 0)
+    response.emptyAtributes = (arrErrors.length != 0)
 
     return response
 }
@@ -39,16 +38,17 @@ const addLocation = async (req, res) =>
     }
     const data = req.body
     const dataReview = dataIsEmpty(data)
-
-    if (!dataReview.emptyAtributes)
+  
+    if (dataReview.emptyAtributes)
     {
         response.message = dataReview.arrErrors
         response.status = 400
         return response
     }
-    const modelGeolocation = new modelGeolocation(data)
+    
+    const mGeolocation = new modelGeolocation(data)
 
-    await modelGeolocation.save()
+    await mGeolocation.save()
 
     return response
 }
