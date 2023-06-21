@@ -11,7 +11,7 @@ const connectMongo = async () => {
             useUnifiedTopology: true,
         }
         
-        mongoose.connect(DB_URL, options)
+        mongoose.connect(DB_URL_PC, options)
         
         console.log('Conectted to mongo')
     } catch (err) {
